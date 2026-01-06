@@ -14,7 +14,8 @@ function SetupScreen({ onStart }) {
         { label: '🎮 Gaming', value: '1 hour of gaming' },
         { label: '🎬 Movie', value: 'Watch a movie tonight' },
         { label: '☕ Coffee', value: 'Fancy coffee date' },
-        { label: '🎁 Gift', value: 'Buy something I want' }
+        { label: '🎁 Gift', value: 'Buy something I want' },
+        { label: '✈️ Travel', value: 'Weekend Trip' }
     ]
 
     const handleDurationChange = (unit) => {
@@ -138,7 +139,7 @@ function SetupScreen({ onStart }) {
                 <div className="form-group">
                     <label>GRID DIFFICULTY</label>
                     <div className="duration-buttons">
-                        {[3, 4, 5].map(size => (
+                        {[3, 4].map(size => (
                             <button
                                 key={size}
                                 type="button"

@@ -100,7 +100,8 @@ function BingoGrid({ size, goals, onUpdateGoal, onToggleComplete, mode, onFinish
                                 autoFocus
                                 style={{
                                     width: '100%', height: '80px', padding: '10px',
-                                    border: '4px solid var(--arcade-border)', fontFamily: 'inherit'
+                                    border: '4px solid var(--arcade-border)', fontFamily: 'inherit',
+                                    fontSize: '16px'
                                 }}
                             />
                         </div>
