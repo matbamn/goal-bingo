@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './SetupScreen.css'
 
 function SetupScreen({ onStart }) {
     const [title, setTitle] = useState('')
@@ -57,12 +58,12 @@ function SetupScreen({ onStart }) {
     }
 
     return (
-        <div className="setup-card">
-            <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '2rem', textAlign: 'center' }}>START YOUR QUEST</h2>
+        <div className="setup-container setup-card">
+            <h2 className="setup-title">START YOUR QUEST</h2>
 
             <form onSubmit={handleSubmit} className="setup-form">
-                <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                    <label style={{ textAlign: 'left' }}>QUEST TITLE</label>
+                <div className="form-group">
+                    <label>QUEST TITLE</label>
                     <input
                         type="text"
                         placeholder="e.g., Summer Fitness Quest"
@@ -72,8 +73,8 @@ function SetupScreen({ onStart }) {
                     />
                 </div>
 
-                <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                    <label style={{ textAlign: 'left' }}>QUEST REWARD</label>
+                <div className="form-group">
+                    <label>QUEST REWARD</label>
                     <input
                         type="text"
                         placeholder="e.g., Weekend Getaway"
@@ -81,19 +82,12 @@ function SetupScreen({ onStart }) {
                         onChange={(e) => setReward(e.target.value)}
                         className="retro-input"
                     />
-                    <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem', justifyContent: 'space-between' }}>
+                    <div className="suggestion-buttons">
                         {rewardSuggestions.map((sug) => (
                             <button
                                 key={sug.label}
                                 type="button"
-                                className="retro-btn"
-                                style={{
-                                    flex: 1,
-                                    padding: '0.4rem 0.3rem',
-                                    fontSize: '0.7rem',
-                                    textAlign: 'center',
-                                    whiteSpace: 'nowrap'
-                                }}
+                                className="retro-btn suggestion-btn"
                                 onClick={() => setReward(sug.value)}
                             >
                                 {sug.label}
@@ -102,21 +96,14 @@ function SetupScreen({ onStart }) {
                     </div>
                 </div>
 
-                <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                    <label style={{ textAlign: 'left' }}>DURATION</label>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <div className="form-group">
+                    <label>DURATION</label>
+                    <div className="duration-buttons">
                         {['week', 'month', 'year', 'custom'].map(unit => (
                             <button
                                 key={unit}
                                 type="button"
-                                className="retro-btn"
-                                style={{
-                                    flex: 1,
-                                    padding: '0.5rem',
-                                    background: durationUnit === unit ? 'var(--arcade-yellow)' : '#eee',
-                                    fontSize: '0.8rem',
-                                    textAlign: 'center'
-                                }}
+                                className={`retro-btn duration-btn ${durationUnit === unit ? '' : 'inactive'}`}
                                 onClick={() => handleDurationChange(unit)}
                             >
                                 {unit === 'week' ? '1 WEEK' : unit === 'month' ? '1 MONTH' : unit === 'year' ? '1 YEAR' : 'CUSTOM'}
@@ -125,17 +112,17 @@ function SetupScreen({ onStart }) {
                     </div>
                 </div>
 
-                <div className="form-group" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                    <div style={{ flex: 1 }}>
-                        <label style={{ textAlign: 'left' }}>START DATE</label>
+                <div className="date-inputs">
+                    <div className="date-input-group">
+                        <label>START DATE</label>
                         <input
                             type="date"
                             value={startDate}
                             onChange={handleStartDateChange}
                         />
                     </div>
-                    <div style={{ flex: 1 }}>
-                        <label style={{ textAlign: 'left' }}>END DATE</label>
+                    <div className="date-input-group">
+                        <label>END DATE</label>
                         <input
                             type="date"
                             value={endDate}
@@ -148,19 +135,14 @@ function SetupScreen({ onStart }) {
                     </div>
                 </div>
 
-                <div className="form-group" style={{ marginBottom: '2rem' }}>
-                    <label style={{ textAlign: 'left' }}>GRID DIFFICULTY</label>
-                    <div style={{ display: 'flex', gap: '1rem' }}>
+                <div className="form-group">
+                    <label>GRID DIFFICULTY</label>
+                    <div className="duration-buttons">
                         {[3, 4, 5].map(size => (
                             <button
                                 key={size}
                                 type="button"
-                                className={`retro-btn ${gridSize === size ? '' : 'inactive'}`}
-                                style={{
-                                    flex: 1,
-                                    background: gridSize === size ? 'var(--arcade-yellow)' : '#eee',
-                                    textAlign: 'center'
-                                }}
+                                className={`retro-btn duration-btn ${gridSize === size ? '' : 'inactive'}`}
                                 onClick={() => setGridSize(size)}
                             >
                                 {size}x{size}
@@ -169,7 +151,7 @@ function SetupScreen({ onStart }) {
                     </div>
                 </div>
 
-                <button type="submit" className="retro-btn" style={{ width: '100%', fontSize: '1.2rem', padding: '1rem', textAlign: 'center' }}>
+                <button type="submit" className="retro-btn submit-btn">
                     CREATE BINGO QUEST!
                 </button>
             </form>

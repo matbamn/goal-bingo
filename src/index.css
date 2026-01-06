@@ -266,6 +266,10 @@ body {
 }
 
 @media (max-width: 600px) {
+  .app-container {
+    padding: 1rem;
+  }
+
   .reward-text {
     font-size: 1.4rem;
   }
